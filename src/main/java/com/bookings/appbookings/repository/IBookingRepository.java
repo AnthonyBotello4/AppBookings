@@ -12,7 +12,7 @@ import java.util.List;
 // Clase - Tipo de dato del PK
 @Repository
 public interface IBookingRepository extends JpaRepository<Booking, Long> {
-    @Query("select b from Booking b where b.checkinDate =: checkin and b.checkoutDate=:checkout")
+    @Query("select b from Booking b where b.checkinDate=:checkin and b.checkoutDate=:checkout")
     List<Booking> findBookingByDates(@Param("checkin") Date checkin_date,
                                      @Param("checkout") Date checkout_date);
 }

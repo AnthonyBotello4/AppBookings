@@ -31,8 +31,9 @@ public class Customer {
     private String phone;
     @Column(name = "email", nullable = true, length = 50)
     private String email;
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+
+}
+/* @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "customer_id", nullable = false)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    private List<Booking> bookings;
-}
+    private List<Booking> bookings; */
