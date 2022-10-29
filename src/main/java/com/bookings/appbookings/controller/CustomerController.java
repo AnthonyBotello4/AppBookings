@@ -62,7 +62,7 @@ public class CustomerController {
         }
     }
 
-    @GetMapping(value = "/searchLastName/{lastName}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/searchLastName/{lastname}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Customer>> findByLastName(@PathVariable ("lastname") String lastname){
         try{
             List<Customer> customers = customerService.findByLastName(lastname);

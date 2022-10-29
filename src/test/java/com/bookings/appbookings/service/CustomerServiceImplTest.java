@@ -104,4 +104,77 @@ public class CustomerServiceImplTest {
         assertEquals(customerExpected, customer);
     }
 
+    @Test
+    public void findByLastName() throws Exception {
+        String lastName = "Perez";
+        List<Customer> list = new ArrayList<>();
+        list.add( new Customer(1L, "Juan",
+                "Perez", "12345678", "Av Monterrico 123",
+                "987654321", "a@km.c"));
+        list.add( new Customer(2L, "Daniel", "Perez",
+                "12345678", "Av Monterrico 123",
+                "987654321", "2@m.c"));
+        list.add( new Customer(3L, "Eduardo", "Perez",
+                "12345678", "Av Monterrico 123",
+                "987654321", "2@m.c"));
+        list.add( new Customer(4L, "Raúl", "Perez",
+                "12345678", "Av Monterrico 123",
+                "987654321", "2@m.c"));
+        list.add( new Customer(5L, "Rosa", "Perez",
+                "12345678", "Av Monterrico 123",
+                "987654321", "2@m.c"));
+
+        given(customerRepository.findByLastName(lastName)).willReturn(list);
+        List<Customer> listExpected = customerService.findByLastName(lastName);
+        assertEquals(listExpected, list);
+    }
+
+    @Test
+    public void findByFirstName() throws Exception {
+        String firstname = "Juan";
+        List<Customer> list = new ArrayList<>();
+        list.add( new Customer(1L, "Juan",
+                "Perez", "12345678", "Av Monterrico 123",
+                "987654321", "a@km.c"));
+        list.add( new Customer(2L, "Juan", "Rojas",
+                "12345678", "Av Monterrico 123",
+                "987654321", "2@m.c"));
+        list.add( new Customer(3L, "Juan", "Quispe",
+                "12345678", "Av Monterrico 123",
+                "987654321", "2@m.c"));
+        list.add( new Customer(4L, "Juan", "Perez",
+                "12345678", "Av Monterrico 123",
+                "987654321", "2@m.c"));
+        list.add( new Customer(5L, "Juan", "Perez",
+                "12345678", "Av Monterrico 123",
+                "987654321", "2@m.c"));
+
+        given(customerRepository.findByFirstName(firstname)).willReturn(list);
+        List<Customer> listExpected = customerService.findByFirstName(firstname);
+        assertEquals(listExpected, list);
+    }
+
+    @Test
+    public void findByFirstnameAndLastName() throws Exception {
+        String firstname = "Juan";
+        String lastname = "Perez";
+        List<Customer> list = new ArrayList<>();
+        list.add(new Customer(1L, "Juan",
+                "Perez", "12345678", "Av Monterrico 123",
+                "987654321", "a@km.c"));
+        list.add(new Customer(2L, "Juan",
+                "Perez", "12345678", "Av Monterrico 123",
+                "987654321", "a@km.c"));
+        list.add(new Customer(3L, "Juan",
+                "Perez", "12345678", "Av Monterrico 123",
+                "987654321", "a@km.c"));
+        list.add(new Customer(4L, "Juan",
+                "Perez", "12345678", "Av Monterrico 123",
+                "987654321", "a@km.c"));
+
+        given(customerRepository.findByFirstNameAndLastName(firstname, lastname)).willReturn(list);
+        List<Customer> listExpected = customerService.findByFirstNameAndLastName(firstname, lastname);
+        assertEquals(listExpected, list);
+
+    }
 }
